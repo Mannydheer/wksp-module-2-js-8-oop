@@ -8,6 +8,7 @@
 
 class Cat {
     constructor(name) {
+        this.species = 'Cat'
         this.type = name;
         this.tiredness = 0;
         this.hunger = 0;
@@ -18,14 +19,17 @@ class Cat {
 
 // B) Instantiate a cat called 'boots' with the Cat class.
 
-let catName = new Cat('boots');
+let boots = new Cat('boots');
+
 
 
 // C) What do you see when you console.log(boots)?
-Cat { name: 'boots', tiredness: 0, hunger: 0, loneliness: 0 }
+// 
+// Cat { name: 'boots', tiredness: 0, hunger: 0, loneliness: 0 }
 
 // D) What if I want to output just boots' species?
 
+console.log(boots.species);
 
 
 // E) Boots' name is not part of its object.

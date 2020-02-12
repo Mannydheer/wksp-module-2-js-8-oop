@@ -15,3 +15,40 @@
 
 
 // B) call the different methods with appropriate values and then console.log boots to see what happened to the property values.
+
+
+class Cat {
+    //now have a name and breed parameter that will be passed. 
+    constructor(name, breedtype) {
+        this.species = 'Cat'
+        this.type = name;
+        this.tiredness = 0;
+        this.hunger = 0;
+        this.loneliness = 0;
+        this.breed = breedtype;
+    }
+    //Sleep method update. 
+    //sleep accepts hours. 
+    sleep = (hours) => {
+        //updated tiredness.
+        this.tiredness = this.tiredness - 5*hours
+    }
+    eat = (grams) => {
+        this.hunger = this.hunger - 0.20*grams;
+    }
+    play = (min) => {
+        this.loneliness = this.loneliness - min*3;
+    }
+
+}
+
+let boots = new Cat();
+//will call sleep and pass it 10 hours. 
+boots.sleep(10);
+//will call eat method and pass it grams. 
+boots.eat(10);
+//will call play method and pass it min. 
+boots.play(10);
+console.log(boots);
+
+

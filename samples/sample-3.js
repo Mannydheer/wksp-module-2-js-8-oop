@@ -7,7 +7,8 @@ class Student {
         this.excitement = this.excitement  + 5;
     }
 
-    writeCode = () => { learn(); }
+    //reference methods with this.learn - must do this to retarget a function. 
+    writeCode = () => { this.learn(); }
 }
 
 let bob = new Student();
