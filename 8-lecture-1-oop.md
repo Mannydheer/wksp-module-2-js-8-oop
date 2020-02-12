@@ -337,6 +337,9 @@ class Male extends Human {
     }
 }
 
+//extend brings all the methods
+//super will trigger constructor
+
 // Create a bob object that is a HUMAN MALE
 let bob = new Male('Bob');
 ```

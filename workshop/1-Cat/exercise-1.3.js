@@ -22,22 +22,35 @@ class Cat {
     constructor(name, breedtype) {
         this.species = 'Cat'
         this.type = name;
-        this.tiredness = 0;
-        this.hunger = 0;
-        this.loneliness = 0;
+        this.tiredness = 50;
+        this.hunger = 50;
+        this.loneliness = 50;
         this.breed = breedtype;
+        this.happiness = 0;
     }
     //Sleep method update. 
     //sleep accepts hours. 
     sleep = (hours) => {
         //updated tiredness.
         this.tiredness = this.tiredness - 5*hours
+        this.happiness += 5 + this.tiredness;
     }
     eat = (grams) => {
         this.hunger = this.hunger - 0.20*grams;
+        this.happiness += 30 + this.hunger;
     }
     play = (min) => {
         this.loneliness = this.loneliness - min*3;
+        this.happiness += 20 + this.hunger
+        
+    }
+    smile = () => {
+        if (this.happiness > 50) {
+            this.happiness = 'Happy';
+        }
+        else {
+            this.happiness = 'Sad';
+        }
     }
 
 }
@@ -49,6 +62,9 @@ boots.sleep(10);
 boots.eat(10);
 //will call play method and pass it min. 
 boots.play(10);
+//will call smile method and pass it a happiness. 
+
+boots.smile()
+
+
 console.log(boots);
-
-
