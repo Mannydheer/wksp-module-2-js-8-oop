@@ -4,6 +4,7 @@ class Dog {
     }
     
     remaining = () => {
+        //.food and .amount does not exicst. 
         console.log(this.food.amount)
     }
  }

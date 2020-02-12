@@ -7,6 +7,7 @@ What does this program do?
 ```js
 const createAcc = () => {
     return { sum: 0 }
+    //sum will stay 0
 }
 const inc = item => { item.sum = item.sum + 1 }
 
@@ -15,8 +16,11 @@ let b = createAcc();
 
 inc(b);
 
-console.log(a.sum);
+console.log(a.sum); 
+//stays 0.
+
 console.log(b.sum);
+// 1
 ```
 
 ---
@@ -48,16 +52,18 @@ But what is a user interface library? _more on that soon_
 ---
 
 ## What is a class?
-
+```js
+//normally in DOM you can do document.getleementbyid but you cannot do it with classes. Because it is another type. They are reserved. 
 Class is yet another type.
 
 Wait. What other types do you know?
-
+```
 ---
 
 ## Defining a class
 
 ```js
+CAPITLIZE the name of the class. 
 class Car {
 
 }
@@ -80,6 +86,11 @@ let yourCar = new Car();
 ---
 
 ## Second Rule of classes: `constructor`
+```
+
+
+
+```
 
 `new` also calls the `constructor` of the class.
 
@@ -87,12 +98,16 @@ _The `this` keyword refers to the new object._
 
 ```js
 class Car {
-    constructor(brand) {
-        this.brand = brand;
+    constructor(brandName, modelName) {
+        this.type = 'automobile';
+        this.brand = brandName || ''; //this way can return undefined.
+        this.model = modelName || '';
+        //assign is the value that you passed to it. 
     }
 }
 
-let myCar = new Car("Toyota");
+//construction will initialize myCar will all of the properties above. 
+let myCar = new Car("Toyota", "Corolla");
 let yourCar = new Car("Honda");
 ```
 
@@ -134,6 +149,7 @@ Every instance of a class has a property that matches the method name and refers
 
 ```js
 class Car {
+    
     noise = () => console.log("Vrooom");
 }
 
@@ -146,7 +162,9 @@ mazda.noise();
 
 ```js
 class School {
+    //constructer declaring property called name. 
     constructor(name) {
+    
         this.name = name;
     }
 
@@ -160,15 +178,16 @@ let concordiaBootcamps = new School('Concordia Bootcamps');
 concordiaBootcamps.noise();
 
 // What do I have to type to output the name?
-
+concordiaBootcamps.name // 'Concordia Bootcamps'
 ```
 
 ---
 
 ```js
+//Given it a construction
 class Dog {
     constructor(voice) {
-        this.voice = voice;
+        this.voice = voice || 'bark';
     }
     noise = () => {
         console.log('woof');
@@ -178,8 +197,19 @@ class Dog {
     }
 }
 
-let mastiff = new Dog();
-let terrier = new Dog();
+let mastiff = new Dog('WOOF!');
+let terrier = new Dog('yip');
+
+mastiff.noise() = //still the small 'wwof'
+But if you change noise
+ noise = () => {
+        console.log('this.voice');
+        //now it will take the voice that you paseed, so 'WOOF";
+
+//this will be undefined if you dont pass it anything. 
+/
+
+//mastiff.noise = console.log('woof')
 ```
 
 ---
@@ -221,6 +251,35 @@ let myCar = new Car();
 myCar.drive(); 
 ```
 
+
+```js
+class Car {
+    constructor() {
+        this.mileage = 0;
+    }
+    drive = (amount) => { this.mileage = this.mileage + amount }
+}
+let myCar = new Car();
+myCar.drive(100); 
+```
+
+```js
+class Car {
+    constructor(mileage) {
+        //if mileage is greater than 0, then used, else new. 
+        this.status = mileage > 0 ? 'used' : 'new';
+        this.mileage = mileage || 0;
+    }
+    drive = (amount) => {
+    this.mileage = this.mileage + amount
+    this.status = 'used';
+    }
+}
+let myCar = new Car(10000);
+myCar.drive(100); 
+```
+
+
 ---
 
 ### Exercise
@@ -229,7 +288,20 @@ myCar.drive();
 // 1. Given this class, how would we represent its hunger level?
 // 2. How could we represent varying hunger levels based on activity?
 // 3. How about when it eats?
+
 class Animal {
+    constructor(name) {
+        this.name = name;
+        this.hungerLvl = 0;
+    }
+
+    play = () => {
+        this.hungerLvl += 20;
+    }
+
+    eat = () => {
+        this.hungerLvl -+ 30;
+    }
 
 }
 
@@ -256,6 +328,7 @@ class Human {
 // Declare a class that extends Human
 class Male extends Human {
     constructor(name) {
+        //if we remove super from this constructor, then we do new male, the constructor will run, it will create property name, but not property name. Super is responsible for creating clss parent?
         super(); // call parent constructor to set the species
         this.name = name;
     }

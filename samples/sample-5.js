@@ -5,6 +5,7 @@ class Dog {
     
     run = () => {
         this.eat();
+        //eat function does not exist/
     }
     
     food = () => {
