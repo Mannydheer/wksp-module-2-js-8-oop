@@ -18,7 +18,7 @@ class Book {
         this.title = title;
         this.genre = genre;
         this.author = author;
-        this.read = read;
+        this.read = read || false;
     }
 
 }
@@ -55,3 +55,4 @@ class BookList {
 }
 const homeLibrary = new BookList();
 homeLibrary.add(new Book("American Gods", "Fantasy", "Neil Gayman", "No"));
+console.log(homeLibrary);
