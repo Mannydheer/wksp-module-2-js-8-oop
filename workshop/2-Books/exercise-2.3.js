@@ -45,14 +45,18 @@ class BookList {
         //first I will push the newly ceated book in the array.
         this.books.push(book);
         //next I will change the value of the read and unread count. 
-        if (book.read == "No") {
+        if (book.read === "No" || book.read === false) {
             this.bookUnread += 1;
-        } else if (book.read == "Yes") {
-            this.books.read += 1;
+        } else if (book.read === "Yes") {
+            this.booksread += 1;
         }
     }
 
 }
 const homeLibrary = new BookList();
-homeLibrary.add(new Book("American Gods", "Fantasy", "Neil Gayman", "No"));
+homeLibrary.add(new Book("American Gods", "Fantasy", "Neil Gayman", "Yes"));
+homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+homeLibrary.add(new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke'));
+homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
+homeLibrary.add(new Book('The Revisionists', 'Science-fiction', 'thomas Mullen'));
 console.log(homeLibrary);
